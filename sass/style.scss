@@ -1,4 +1,82 @@
-html {
-  background: red;
-  color: white;
+#outer_container {
+  position: relative;
+  margin: 0 auto;
+  width: 480px;
+  height: 2090px;
+  background-image: url('../assets/bg.jpg');
+
+  #header {
+    height: 65px;
+    width: 100%;
+    background-color: white;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #494343;
+    text-align: center;
+
+    li {
+      float: left;      
+      span {
+        display: block;
+        color: white;
+        width: 118px;
+        height: 45px;
+        font-size: 1em;
+        border: 1px solid #a1a1a1;
+        cursor: pointer;
+      }
+
+      span:hover {
+        background-color: #a1a1a1;
+      }
+    }
+  }
+
+  #page_container {
+    height: 1980px;
+
+    .post_container {
+      position: relative;
+      margin: 10px auto;
+      width: 455px;
+      height: 480px;
+      background-color: white;
+      overflow: hidden;
+      cursor: pointer;
+
+      .thumbnail {
+        position: relative;
+        width: 410px;
+        height: 250px;
+        margin: 10px auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      h2 {
+        margin: 0 auto;
+      }
+
+      h3 {
+        margin: 0;
+      }
+
+      .post_text {
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+  }
 }
