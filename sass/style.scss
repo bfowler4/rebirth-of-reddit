@@ -57,24 +57,33 @@
         position: relative;
         width: 410px;
         height: 250px;
-        margin: 10px auto;
+        margin: 20px auto;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
       }
 
-      h2 {
+      .h2_container {
         margin: 0 auto;
-      }
+        width: 410px;
 
-      h3 {
-        margin: 0;
-      }
+        h2 {
+          margin: 0;
+          font-family: 'Oswald';
+        }
 
-      .post_text {
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
+        h3 {
+          margin: 0;
+          font-family: 'Lato';
+        }
+  
+        .post_text {
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          font-family: 'Lato';
+        }
       }
     }
 

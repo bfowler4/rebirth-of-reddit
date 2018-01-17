@@ -43,15 +43,22 @@
         position: relative;
         width: 410px;
         height: 250px;
-        margin: 10px auto;
+        margin: 20px auto;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat; }
-      #outer_container #page_container .post_container h2 {
-        margin: 0 auto; }
-      #outer_container #page_container .post_container h3 {
-        margin: 0; }
-      #outer_container #page_container .post_container .post_text {
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical; }
+      #outer_container #page_container .post_container .h2_container {
+        margin: 0 auto;
+        width: 410px; }
+        #outer_container #page_container .post_container .h2_container h2 {
+          margin: 0;
+          font-family: 'Oswald'; }
+        #outer_container #page_container .post_container .h2_container h3 {
+          margin: 0;
+          font-family: 'Lato'; }
+        #outer_container #page_container .post_container .h2_container .post_text {
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          font-family: 'Lato'; }
