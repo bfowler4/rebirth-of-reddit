@@ -165,10 +165,17 @@
     #outer_container #footer {
       display: block;
       height: 50px;
-      background-color: #3A3A3C; }
+      width: 1200px;
+      background-color: #3A3A3C;
+      position: fixed;
+      z-index: 1;
+      bottom: 0%; }
       #outer_container #footer #logo_container {
+        position: relative;
         width: 120px;
         padding-top: 12px;
-        margin: 0 auto; }
+        margin: 0 auto;
+        left: -5px; }
         #outer_container #footer #logo_container .logo_grey {
-          margin-left: 24px; } }
+          margin-left: 24px;
+          cursor: pointer; } }

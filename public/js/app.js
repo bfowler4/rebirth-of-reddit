@@ -1,17 +1,22 @@
+let currentSub = `Dirtybird`;
 buildPage(`Dirtybird`);
 document.getElementById(`navigation_bar`).addEventListener(`click`, (event) => {
   event.preventDefault();
   switch (event.target.innerHTML) {
     case `DIRTYBIRD`:
+      currentSub = `Dirtybird`;
       buildPage(`Dirtybird`);
       break;
     case `CS`:
+      currentSub = `cscareerquestions`;
       buildPage(`cscareerquestions`);
       break;
     case `EAT`:
+      currentSub = `EatCheapAndHealthy`;
       buildPage(`EatCheapAndHealthy`);
       break;
     case `RANDOM`:
+      currentSub = `random`;
       buildPage(`random`);
       break;
   }
@@ -28,12 +33,21 @@ document.getElementById(`facebook_grey`).addEventListener(`mouseover`, (event) =
 document.getElementById(`facebook_grey`).addEventListener(`mouseout`, (event) => {
   event.target.src = `assets/facebook_grey.svg`;
 });
+document.getElementById(`instagram_grey`).addEventListener(`click`, (event) => {
+  window.open(`http://www.instagram.com/bfowluhhh`);
+});
+document.getElementById(`facebook_grey`).addEventListener(`click`, (event) => {
+  window.open(`http://www.facebook.com/brandon.fowler.33`);
+});
 
 function buildPage(sub) {
   let xhr = new XMLHttpRequest();
   xhr.addEventListener(`load`, function (event) {
     let data = fetchData(event);
     let container = createElement(`div`, `page_inner_div`);
+    container.addEventListener(`click`, () => {
+      console.log(`we did it`)
+    })
     let doublePostContainer = createElement(`div`, `double_post_container`);
     data.forEach((curr, index) => {
       let post = createPost(curr);

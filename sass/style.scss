@@ -251,15 +251,22 @@
     #footer {
       display: block;
       height: 50px;
+      width: 1200px;
       background-color: #3A3A3C;
+      position: fixed;
+      z-index: 1;
+      bottom: 0%;      
 
       #logo_container {
+        position: relative;
         width: 120px;
         padding-top: 12px;
         margin: 0 auto;
+        left: -5px;
         
         .logo_grey {
           margin-left: 24px;
+          cursor: pointer;
         }
       }
     }
