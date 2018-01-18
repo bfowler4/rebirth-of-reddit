@@ -11,12 +11,15 @@
       position: fixed;
       top: 0;
       z-index: 1; }
-      #outer_container #header img {
+      #outer_container #header #header_logo {
         height: 100%; }
+      #outer_container #header #header_bg {
+        display: none; }
     #outer_container #navigation_bar {
       position: fixed;
       top: 65px;
-      z-index: 1; }
+      z-index: 1;
+      background-color: #3A3A3C; }
       #outer_container #navigation_bar ul {
         list-style-type: none;
         margin: 0;
@@ -38,7 +41,7 @@
     #outer_container #page_container {
       padding-top: 110px;
       padding-bottom: 10px; }
-      #outer_container #page_container .post_container {
+      #outer_container #page_container .double_post_container .post_container {
         position: relative;
         margin: 10px auto;
         width: 455px;
@@ -47,7 +50,7 @@
         background-color: white;
         overflow: hidden;
         cursor: pointer; }
-        #outer_container #page_container .post_container .thumbnail {
+        #outer_container #page_container .double_post_container .post_container .thumbnail {
           position: relative;
           width: 410px;
           height: 250px;
@@ -55,10 +58,10 @@
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat; }
-        #outer_container #page_container .post_container .h2_container {
+        #outer_container #page_container .double_post_container .post_container .text_container {
           margin: 0 auto;
           width: 410px; }
-          #outer_container #page_container .post_container .h2_container h2 {
+          #outer_container #page_container .double_post_container .post_container .text_container h2 {
             margin: 0;
             font-family: 'Oswald';
             color: #3A3A3C;
@@ -66,7 +69,7 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden; }
-          #outer_container #page_container .post_container .h2_container ul {
+          #outer_container #page_container .double_post_container .post_container .text_container ul {
             margin: 0;
             padding: 0;
             font-family: 'Lato';
@@ -75,45 +78,97 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden; }
-            #outer_container #page_container .post_container .h2_container ul li {
+            #outer_container #page_container .double_post_container .post_container .text_container ul li {
               display: inline;
               white-space: nowrap; }
-            #outer_container #page_container .post_container .h2_container ul li:after {
+            #outer_container #page_container .double_post_container .post_container .text_container ul li:after {
               content: ' \00b7 '; }
-            #outer_container #page_container .post_container .h2_container ul li.nobullet:after {
+            #outer_container #page_container .double_post_container .post_container .text_container ul li.nobullet:after {
               content: none; }
-          #outer_container #page_container .post_container .h2_container .post_text {
+          #outer_container #page_container .double_post_container .post_container .text_container .post_text {
             display: -webkit-box;
             -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             font-family: 'Lato';
             color: #3A3A3C;
-            margin-bottom: 25px; } }
+            margin-bottom: 25px; }
+    #outer_container #footer {
+      display: none; } }
 
 @media screen and (min-width: 770px) {
   #outer_container {
     width: 770px; }
     #outer_container #header {
       width: 770px; }
+      #outer_container #header #header_logo {
+        position: relative;
+        left: 320px; }
+      #outer_container #header #header_bg {
+        display: block;
+        position: relative;
+        top: -40px;
+        left: 180px; }
     #outer_container #navigation_bar {
       width: 770px; }
-    #outer_container #page_container .post_container {
-      width: 325px;
-      min-height: 400px; }
-      #outer_container #page_container .post_container .thumbnail {
-        width: 275px;
-        height: 168px; }
-      #outer_container #page_container .post_container .h2_container {
-        width: 275px; } }
+      #outer_container #navigation_bar ul {
+        margin: 0 auto;
+        padding-top: 10px;
+        width: 208px; }
+        #outer_container #navigation_bar ul li {
+          display: inline; }
+          #outer_container #navigation_bar ul li span {
+            border: none;
+            height: 35px;
+            width: auto;
+            margin-left: 5px; }
+          #outer_container #navigation_bar ul li span:after {
+            content: ' \00b7 '; }
+          #outer_container #navigation_bar ul li span.nobullet:after {
+            content: none; }
+    #outer_container #page_container .double_post_container {
+      width: 700px;
+      margin: 0 auto; }
+      #outer_container #page_container .double_post_container .post_container {
+        width: 325px;
+        min-height: 416px;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 17px; }
+        #outer_container #page_container .double_post_container .post_container .thumbnail {
+          width: 275px;
+          height: 168px; }
+        #outer_container #page_container .double_post_container .post_container .text_container {
+          width: 275px; } }
 
 @media screen and (min-width: 1200px) {
   #outer_container {
     width: 1200px; }
     #outer_container #header {
       width: 1200px; }
+      #outer_container #header #header_logo {
+        left: 535px; }
+      #outer_container #header #header_bg {
+        left: 395px; }
     #outer_container #navigation_bar {
       width: 1200px; }
+      #outer_container #navigation_bar span:hover {
+        color: #F1592A; }
+    #outer_container #page_container .double_post_container {
+      width: 720px; }
+      #outer_container #page_container .double_post_container .post_container {
+        margin-left: 12px;
+        margin-right: 12px;
+        border: 4px solid white; }
+      #outer_container #page_container .double_post_container .post_container:hover {
+        border: 4px solid #F7941E; }
     #outer_container #footer {
+      display: block;
       height: 50px;
-      background-color: #3A3A3C; } }
+      background-color: #3A3A3C; }
+      #outer_container #footer #logo_container {
+        width: 120px;
+        padding-top: 12px;
+        margin: 0 auto; }
+        #outer_container #footer #logo_container .logo_grey {
+          margin-left: 24px; } }
