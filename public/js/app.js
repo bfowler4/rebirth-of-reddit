@@ -2,9 +2,12 @@ function buildPage(sub) {
   let xhr = new XMLHttpRequest();
   xhr.addEventListener(`load`, function (event) {
     let data = fetchData(event);
+    let container = createElement(`div`, `page_inner_div`);
     data.forEach((curr) => {
-      buildPost(curr);
+      container.appendChild(buildPost(curr));
     });
+    document.getElementById(`page_container`).innerHTML = ``;
+    document.getElementById(`page_container`).innerHTML = container.innerHTML;
   });
   xhr.open(`GET`, `https://www.reddit.com/r/${sub}.json`);
   xhr.send();
@@ -43,10 +46,6 @@ function createElement(type, className, innerHTML) {
   return element;
 }
 
-function clearElement(id) {
-  document.getElementById(id).innerHTML = '';
-}
-
 function buildPost(data) {
   let container = createElement(`div`, `post_container`);
   let thumbnail = createElement(`div`, `thumbnail`);
@@ -68,12 +67,12 @@ function buildPost(data) {
   container.addEventListener(`click`, (event) => {
     window.open(data.url);
   });
-  document.getElementById(`page_container`).appendChild(container);
+  return container;
 }
 
 let dirtybird = buildPage(`Dirtybird`);
 document.getElementById(`navigation_bar`).addEventListener(`click`, (event) => {
-  clearElement(`page_container`);
+  event.preventDefault();
   switch (event.target.innerHTML) {
     case `DIRTYBIRD`:
       buildPage(`Dirtybird`);

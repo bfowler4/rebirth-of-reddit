@@ -14,15 +14,22 @@
   
     #header {
       height: 65px;
-      width: 100%;
+      width: 480px;
       background-color: white;
-  
+      position: fixed;
+      top: 0;
+      z-index: 1;
+
       img {
         height: 100%;
       }
     }
   
     #navigation_bar {
+      position: fixed;
+      top: 65px;
+      z-index: 1;
+
       ul {
         list-style-type: none;
         margin: 0;
@@ -49,6 +56,7 @@
     }
   
     #page_container {
+      padding-top: 110px;
       padding-bottom: 10px;
   
       .post_container {
@@ -119,6 +127,14 @@
   #outer_container {
     width: 770px;
 
+    #header {
+      width: 770px;
+    }
+
+    #navigation_bar {
+      width: 770px;
+    }
+
     #page_container {
 
       .post_container {
@@ -141,6 +157,14 @@
 @media screen and (min-width: 1200px) {
   #outer_container {
     width: 1200px;
+
+    #header {
+      width: 1200px;
+    }
+
+    #navigation_bar {
+      width: 1200px;
+    }
 
     #footer {
       height: 50px;

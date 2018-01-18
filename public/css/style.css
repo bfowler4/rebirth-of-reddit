@@ -6,29 +6,37 @@
     background-image: url("../assets/bg.jpg"); }
     #outer_container #header {
       height: 65px;
-      width: 100%;
-      background-color: white; }
+      width: 480px;
+      background-color: white;
+      position: fixed;
+      top: 0;
+      z-index: 1; }
       #outer_container #header img {
         height: 100%; }
-    #outer_container #navigation_bar ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #3A3A3C;
-      text-align: center; }
-      #outer_container #navigation_bar ul li {
-        float: left; }
-        #outer_container #navigation_bar ul li span {
-          display: block;
-          color: #818285;
-          width: 118px;
-          height: 45px;
-          font-size: 1em;
-          font-family: 'Oswald';
-          border: 1px solid #818285;
-          cursor: pointer; }
+    #outer_container #navigation_bar {
+      position: fixed;
+      top: 65px;
+      z-index: 1; }
+      #outer_container #navigation_bar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #3A3A3C;
+        text-align: center; }
+        #outer_container #navigation_bar ul li {
+          float: left; }
+          #outer_container #navigation_bar ul li span {
+            display: block;
+            color: #818285;
+            width: 118px;
+            height: 45px;
+            font-size: 1em;
+            font-family: 'Oswald';
+            border: 1px solid #818285;
+            cursor: pointer; }
     #outer_container #page_container {
+      padding-top: 110px;
       padding-bottom: 10px; }
       #outer_container #page_container .post_container {
         position: relative;
@@ -86,6 +94,10 @@
 @media screen and (min-width: 770px) {
   #outer_container {
     width: 770px; }
+    #outer_container #header {
+      width: 770px; }
+    #outer_container #navigation_bar {
+      width: 770px; }
     #outer_container #page_container .post_container {
       width: 325px;
       min-height: 400px; }
@@ -98,6 +110,10 @@
 @media screen and (min-width: 1200px) {
   #outer_container {
     width: 1200px; }
+    #outer_container #header {
+      width: 1200px; }
+    #outer_container #navigation_bar {
+      width: 1200px; }
     #outer_container #footer {
       height: 50px;
       background-color: #3A3A3C; } }
