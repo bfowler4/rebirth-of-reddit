@@ -2,9 +2,9 @@ function buildPage(sub) {
   let xhr = new XMLHttpRequest();
   xhr.addEventListener(`load`, function (event) {
     let data = fetchData(event);
-    for (let i = 0; i < 4; i++) {
-      buildPost(data[i]);
-    }
+    data.forEach((curr) => {
+      buildPost(curr);
+    });
   });
   xhr.open(`GET`, `https://www.reddit.com/r/${sub}.json`);
   xhr.send();
@@ -28,7 +28,7 @@ function fetchData(event) {
         res[index][key] = curr.data[key];
       }
     });
-  })
+  });
   return res;
 }
 
@@ -44,10 +44,7 @@ function createElement(type, className, innerHTML) {
 }
 
 function clearElement(id) {
-  let element = document.getElementById(id);
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
+  document.getElementById(id).innerHTML = '';
 }
 
 function buildPost(data) {
@@ -63,9 +60,10 @@ function buildPost(data) {
   h2_container.appendChild(createElement(`h2`, `post_title`, data.title));
   container.appendChild(h2_container);
   let timeSincePosted = moment.unix(data['created_utc']).utc().fromNow();
-  h2_container.appendChild(
-    createElement(`h3`, `post_details`, `by ${data.author} - ${timeSincePosted}`)
-  );
+  let post_details = createElement(`ul`, `post_details`);
+  post_details.appendChild(createElement(`li`, `post_data`, `by ${data.author}`));
+  post_details.appendChild(createElement(`li`, `nobullet post_data`, `${timeSincePosted}`));
+  h2_container.appendChild(post_details);
   h2_container.appendChild(createElement(`p`, `post_text`, data.selftext));
   container.addEventListener(`click`, (event) => {
     window.open(data.url);
