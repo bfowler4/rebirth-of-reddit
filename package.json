@@ -21,6 +21,7 @@
   "homepage": "https://github.com/bfowler4/rebirth-of-reddit#readme",
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "moment": "^2.20.1"
   }
 }

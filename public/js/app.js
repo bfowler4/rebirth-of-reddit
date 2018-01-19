@@ -1,3 +1,7 @@
+window.onerror = function() {
+  console.log('here');
+}
+
 let currentSub = `Dirtybird`;
 buildPage(`Dirtybird`);
 document.getElementById(`navigation_bar`).addEventListener(`click`, (event) => {
@@ -21,6 +25,15 @@ document.getElementById(`navigation_bar`).addEventListener(`click`, (event) => {
       break;
   }
 });
+window.onscroll = function () {
+  Array.prototype.slice.call(document.getElementsByClassName(`post_container`)).forEach((curr) => {
+    let bottomOfCurrent = curr.getBoundingClientRect().y + curr.getBoundingClientRect().height;
+    let bottomOfScreen = window.scrollY + window.innerHeight - 500;
+    if (window.innerHeight > bottomOfCurrent - 300) {
+      curr.style.opacity = 1;
+    }
+  });
+}
 document.getElementById(`instagram_grey`).addEventListener(`mouseover`, (event) => {
   event.target.src = `assets/instagram_orange.svg`;
 });
@@ -45,15 +58,9 @@ function buildPage(sub) {
   xhr.addEventListener(`load`, function (event) {
     let data = fetchData(event);
     let container = createElement(`div`, `page_inner_div`);
-    container.addEventListener(`click`, () => {
-      console.log(`we did it`)
-    })
     let doublePostContainer = createElement(`div`, `double_post_container`);
     data.forEach((curr, index) => {
       let post = createPost(curr);
-      if (index % 2 === 0) {
-      } else {
-      }
       doublePostContainer.appendChild(post);
       if (index % 2 !== 0) {
         container.appendChild(doublePostContainer);
@@ -61,7 +68,16 @@ function buildPage(sub) {
       }
     });
     document.getElementById(`page_container`).innerHTML = ``;
-    document.getElementById(`page_container`).innerHTML = container.innerHTML;
+    document.getElementById(`page_container`).appendChild(container);
+    for (element of document.getElementsByClassName(`post_container`)) {
+      let bottomOfCurrent = element.getBoundingClientRect().y + element.getBoundingClientRect().height;
+      if (window.innerHeight > bottomOfCurrent - 300) {
+        element.style.transition = `none`;
+        element.style.opacity = 1;
+      } else {
+        break;
+      }
+    }
   });
   xhr.open(`GET`, `https://www.reddit.com/r/${sub}.json`);
   xhr.send();
@@ -121,5 +137,5 @@ function createPost(data) {
   container.addEventListener(`click`, (event) => {
     window.open(data.url);
   });
-  return container; 
+  return container;
 }
