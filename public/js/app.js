@@ -1,11 +1,6 @@
-window.onerror = function() {
-  console.log('here');
-}
-
 let currentSub = `Dirtybird`;
 buildPage(`Dirtybird`);
 document.getElementById(`navigation_bar`).addEventListener(`click`, (event) => {
-  event.preventDefault();
   switch (event.target.innerHTML) {
     case `DIRTYBIRD`:
       currentSub = `Dirtybird`;
@@ -21,19 +16,18 @@ document.getElementById(`navigation_bar`).addEventListener(`click`, (event) => {
       break;
     case `RANDOM`:
       currentSub = `random`;
-      buildPage(`random`);
+      buildPage(`${listOfSubs[Math.floor(Math.random() * listOfSubs.length)]}`);
       break;
   }
 });
 window.onscroll = function () {
   Array.prototype.slice.call(document.getElementsByClassName(`post_container`)).forEach((curr) => {
     let bottomOfCurrent = curr.getBoundingClientRect().y + curr.getBoundingClientRect().height;
-    let bottomOfScreen = window.scrollY + window.innerHeight - 500;
     if (window.innerHeight > bottomOfCurrent - 300) {
       curr.style.opacity = 1;
     }
   });
-}
+};
 document.getElementById(`instagram_grey`).addEventListener(`mouseover`, (event) => {
   event.target.src = `assets/instagram_orange.svg`;
 });
@@ -58,6 +52,7 @@ function buildPage(sub) {
   xhr.addEventListener(`load`, function (event) {
     let data = fetchData(event);
     let container = createElement(`div`, `page_inner_div`);
+
     let doublePostContainer = createElement(`div`, `double_post_container`);
     data.forEach((curr, index) => {
       let post = createPost(curr);
@@ -67,8 +62,11 @@ function buildPage(sub) {
         doublePostContainer = createElement(`div`, `double_post_container`);
       }
     });
+
+    window.scrollTo(0, 0);
     document.getElementById(`page_container`).innerHTML = ``;
     document.getElementById(`page_container`).appendChild(container);
+
     for (element of document.getElementsByClassName(`post_container`)) {
       let bottomOfCurrent = element.getBoundingClientRect().y + element.getBoundingClientRect().height;
       if (window.innerHeight > bottomOfCurrent - 300) {
@@ -118,22 +116,30 @@ function createElement(type, className, innerHTML) {
 
 function createPost(data) {
   let container = createElement(`div`, `post_container`);
+
   let thumbnail = createElement(`div`, `thumbnail`);
   if (!data.thumbnail || data.thumbnail === `self`) {
-    thumbnail.style.backgroundImage = `url('../assets/dirtybird.jpg')`;
+    switch(currentSub) {
+      case `Dirtybird`:
+        thumbnail.style.backgroundImage = `url('../assets/dirtybird.jpg')`;
+        break;
+      default:
+        thumbnail.style.backgroundImage = `url('../assets/reddit.jpg')`;
+    }
   } else {
     thumbnail.style.backgroundImage = `url('${data.thumbnail}')`;
   }
   container.appendChild(thumbnail);
-  let text_container = createElement(`div`, `text_container`);
-  text_container.appendChild(createElement(`h2`, `post_title`, data.title));
-  container.appendChild(text_container);
+
+  let textContainer = createElement(`div`, `text_container`);
+  textContainer.appendChild(createElement(`h2`, `post_title`, data.title));
+  container.appendChild(textContainer);
   let timeSincePosted = moment.unix(data['created_utc']).utc().fromNow();
-  let post_details = createElement(`ul`, `post_details`);
-  post_details.appendChild(createElement(`li`, `post_data`, `by ${data.author}`));
-  post_details.appendChild(createElement(`li`, `nobullet post_data`, `${timeSincePosted}`));
-  text_container.appendChild(post_details);
-  text_container.appendChild(createElement(`p`, `post_text`, data.selftext));
+  let postDetails = createElement(`ul`, `post_details`);
+  postDetails.appendChild(createElement(`li`, `post_data`, `by ${data.author}`));
+  postDetails.appendChild(createElement(`li`, `nobullet post_data`, `${timeSincePosted}`));
+  textContainer.appendChild(postDetails);
+  textContainer.appendChild(createElement(`p`, `post_text`, data.selftext));
   container.addEventListener(`click`, (event) => {
     window.open(data.url);
   });
