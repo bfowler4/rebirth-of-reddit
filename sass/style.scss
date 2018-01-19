@@ -26,7 +26,7 @@
       z-index: 1;
 
       #header_logo {
-        height: 100%;
+        width: 150px;
       }
 
       #header_bg {
@@ -152,14 +152,15 @@
 
         #header_logo {
           position: relative;
-          left: 190px;
+          left: 175px;
         }
   
         #header_bg {
           display: block;
           position: relative;
+          width: 450px;
           top: -40px;
-          left: 45px;
+          left: 25px;
         }
       }
     }
@@ -169,14 +170,15 @@
         margin: 0 auto;
         padding-top: 10px;
         width: 208px;
+        line-height: 1.5;
 
         li {
           display: inline;
+          width: auto;
 
           span {
             border: none;
             height: 35px;
-            width: auto;
             margin-left: 5px;
           }
 

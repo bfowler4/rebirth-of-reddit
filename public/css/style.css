@@ -15,7 +15,7 @@
       top: 0;
       z-index: 1; }
       #outer_container #header #header_logo {
-        height: 100%; }
+        width: 150px; }
       #outer_container #header #header_bg {
         display: none; }
     #outer_container #navigation_bar {
@@ -109,22 +109,24 @@
     margin: 0 auto; }
     #outer_container #header #header_image_container #header_logo {
       position: relative;
-      left: 190px; }
+      left: 175px; }
     #outer_container #header #header_image_container #header_bg {
       display: block;
       position: relative;
+      width: 450px;
       top: -40px;
-      left: 45px; }
+      left: 25px; }
   #outer_container #navigation_bar ul {
     margin: 0 auto;
     padding-top: 10px;
-    width: 208px; }
+    width: 208px;
+    line-height: 1.5; }
     #outer_container #navigation_bar ul li {
-      display: inline; }
+      display: inline;
+      width: auto; }
       #outer_container #navigation_bar ul li span {
         border: none;
         height: 35px;
-        width: auto;
         margin-left: 5px; }
       #outer_container #navigation_bar ul li span:after {
         content: ' \00b7 '; }
